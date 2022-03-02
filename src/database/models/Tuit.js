@@ -4,7 +4,6 @@ const TuitSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-    timestamps: true,
   },
   text: {
     type: String,
