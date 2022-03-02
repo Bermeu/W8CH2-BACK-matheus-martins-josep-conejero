@@ -1,5 +1,5 @@
 require("dotenv").config();
-const debug = require("debug")("redsocial:server");
+const debug = require("debug")("tuitah:server");
 
 const riseTheServer = (port, app) =>
   new Promise((resolve, reject) => {
