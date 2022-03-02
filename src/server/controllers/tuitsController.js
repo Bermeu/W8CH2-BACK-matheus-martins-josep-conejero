@@ -1,5 +1,4 @@
 require("dotenv").config();
-// const debug = require("debug")("tuits:tuitsController");
 const Tuit = require("../../database/models/Tuit");
 
 const getAllTuits = async (req, res) => {
@@ -34,4 +33,15 @@ const deleteTuit = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllTuits, addTuit, deleteTuit };
+const updateTuit = async (req, res, next) => {
+  const { idTuit } = req.params;
+  try {
+    const tuit = req.body;
+    const updatedTuit = await Tuit.findByIdAndUpdate(idTuit, tuit);
+    res.status(200).json(updatedTuit);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getAllTuits, addTuit, deleteTuit, updateTuit };
