@@ -7,4 +7,14 @@ const getAllTuits = async (req, res) => {
   res.json({ tuits });
 };
 
-module.exports = getAllTuits;
+const addTuit = async (req, res, next) => {
+  try {
+    const tuit = req.body;
+    const newTuit = await Tuit.create(tuit);
+    res.status(201).json(newTuit);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getAllTuits, addTuit };
